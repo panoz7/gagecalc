@@ -1,5 +1,6 @@
-import {gageCalc, isValidGage, toNoDecimal, isValidMeasurement} from './gage-calc.js'
-import {randomNum} from './helper.js';
+import {gageCalc, isValidGage, toNoDecimal, isValidMeasurement} from '../src/gage-calc.js'
+import {randomNum} from '../src/helper.js';
+import {gageData} from '../src/gage-info.js';
 
 const gages = [
     .0500,
@@ -43,6 +44,7 @@ const gages = [
     .128,
     .129,
     .130,
+    .131,
     .132,
     .133,
     .134,
@@ -52,6 +54,7 @@ const gages = [
     .138,
     .139,
     .140,
+    .141,
     .142,
     .143,
     .144,
@@ -209,6 +212,31 @@ for (let i = 1000; i < 110000; i++) {
 
 console.log('checkMeasurement:', checkMeasurementTest ? 'passed' : 'failed')
 
+
+let checkGageDataTest = true;
+// Makes sure each gage is in the gage data 
+for (let testGage of gages) {
+    const matches = gageData.filter(gage => gage.width === testGage);
+    if (matches.length != 1) {
+        checkGageDataTest = false;
+        console.log("Failed gage: ", testGage)
+    }
+}
+// Make sure each gage in gage data is in gages
+// Also make sure the gage name and width match up
+for (let gage of gageData) {
+    if (gages.indexOf(gage.width) === -1) {
+        checkGageDataTest = false;
+        console.log("Failed gage: ", gage)
+    }
+    if (gage.width !== Number(gage.name)) {
+        checkGageDataTest = false;
+        console.log("Failed gage: ", gage.width, Number(gage.name))
+    }
+}
+
+
+console.log('checkGageData:', checkGageDataTest ? 'passed' : 'failed')
 
 
 function checkRandomGages() {
