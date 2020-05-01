@@ -1,7 +1,7 @@
 export function gageCalc(measurement) {
     
     if (!isValidMeasurement(measurement)) {
-        throw new Error(`measurement "${measurement}" not valid`);
+        throw new Error(`Measurement "${measurement}" is not valid`);
     }
 
     let gages = [];

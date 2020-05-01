@@ -7,6 +7,8 @@
     <meta name="apple-mobile-web-app-title" content="GageCalc">
 
     <title>Gage Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -14,6 +16,9 @@
 
     <input type="number" min="0" inputmode="decimal" pattern="[0-9]*" id='input-measurement'>
     <button type='button' id='process-measurement'>Submit</button>
+
+    <div id='error'>
+    </div>
 
     <ul id='output'>
 
