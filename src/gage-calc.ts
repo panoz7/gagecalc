@@ -1,4 +1,9 @@
-export function gageCalc(measurement) {
+interface processPlaceResult {
+    remaining: number;
+    gages: number[];
+}
+
+export function gageCalc(measurement: number): number[] {
     
     if (!isValidMeasurement(measurement)) {
         throw new Error(`Measurement "${measurement}" is not valid`);
@@ -18,7 +23,7 @@ export function gageCalc(measurement) {
 }
 
 
-function processPlace(num, place) {
+function processPlace(num: number, place: number): processPlaceResult {
     let remaining = num; 
     let gages = [];
     
@@ -51,15 +56,15 @@ function processPlace(num, place) {
 }
 
 
-export function toNoDecimal(decimal) {
+export function toNoDecimal(decimal: number): number {
     return Number((decimal * 10000).toFixed(0));
 }
 
-function toDecimal(integer) {
+function toDecimal(integer: number): number {
     return integer / 10000;
 }
 
-function splitTenThousands(num) {
+function splitTenThousands(num: number): number[] {
     let gages = [];
     let remaining = num;
     for (let i = 40000; i >= 10000; i -= 10000) {
@@ -71,7 +76,7 @@ function splitTenThousands(num) {
     return gages;
 }
 
-export function isValidMeasurement(num) {
+export function isValidMeasurement(num: number): boolean {
 
     // Check that it's a number and it has no more than 4 decimal places
     if (typeof num !== 'number' || getNumDecimals(num) > 4) {
@@ -91,17 +96,17 @@ export function isValidMeasurement(num) {
 }
 
 
-function getNumDecimals(num) {
+function getNumDecimals(num: number): number {
     const numString = num.toString();
     return numString.length - numString.indexOf('.') - 1;
 }
 
-function getPlaceValue(num, place) {
+function getPlaceValue(num: number, place: number): number {
     return Number(num.toString().substr(-1 * (Math.log10(place) + 1)));
 }
 
 
-export function isValidGage(num) {
+export function isValidGage(num: number): boolean {
 
     if (num == 500 || num === 1000) {
         return true;

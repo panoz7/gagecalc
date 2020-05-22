@@ -1,1 +1,24 @@
-{ "type": "module" }
+{
+  "type": "module",
+  "name": "gagecalc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panoz7/gagecalc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panoz7/gagecalc/issues"
+  },
+  "homepage": "https://github.com/panoz7/gagecalc#readme",
+  "description": ""
+}
