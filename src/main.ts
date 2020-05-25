@@ -1,5 +1,5 @@
-import {gageCalc} from './gage-calc.js'
-import {gageData} from './gage-info.js'
+import {gageCalc} from './gage-calc'
+import {gageData} from './gage-info'
 
 
 const inputMeasurementField = document.getElementById('input-measurement') as HTMLInputElement;
@@ -13,6 +13,7 @@ function processMeasurement() {
     const input = inputMeasurementField.value;
     if (input) {
         const measurement = Number(input);
+        console.log(measurement);
 
         try {
             const gages = gageCalc(measurement);
